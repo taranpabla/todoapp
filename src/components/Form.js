@@ -1,15 +1,24 @@
 import React from 'react';
 
-const Form = ({setInputText}) => {
+const Form = ({setInputText, todos, setTodos}) => {
   const inputTextHandler = (e) => {
     console.log(e.target.value); //.target.value gets the input from the text input box
-    setInputText(e.target.value);
+    setInputText(e.target.value); //update state with input text
+  };
+  const submitTodoHandler = (e) => {
+    e.preventDefault(); // prevents default behavior; stops page from being refreshed when buttom is clicked
+    setTodos([ //Create object with text, bool for completed and uniqueID
+      ...todos, 
+      {text: inputTextHandler, completed: false, id: Math.random() * 1000},
+    ]);
+    setInputText("");
   };
 
-    return(
+
+  return(
         <form>
-        <input onChange={inputTextHandler} type="text" className="todo-input" />
-        <button className="todo-button" type="submit">
+        <input onChange = {inputTextHandler} type="text" className="todo-input" />
+        <button onClick = {submitTodoHandler} className="todo-button" type="submit">
           <i className="fas fa-plus-square"></i>
         </button>
         <div className="select">
