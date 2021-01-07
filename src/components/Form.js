@@ -2,7 +2,7 @@ import React from 'react';
 
 const Form = ({setInputText, todos, setTodos, inputText}) => {
   const inputTextHandler = (e) => {
-    console.log(e.target.value); //.target.value gets the input from the text input box
+    console.log(e.target.value); //.target.value gets the input from the input text box
     setInputText(e.target.value); //update state with input text
   };
   const submitTodoHandler = (e) => {
@@ -11,7 +11,7 @@ const Form = ({setInputText, todos, setTodos, inputText}) => {
       ...todos, 
       {text: inputText, completed: false, id: Math.random() * 1000},
     ]);
-    setInputText("");
+    setInputText(""); // Clear out input text box
   };
 
 
